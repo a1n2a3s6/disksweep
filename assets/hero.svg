@@ -1,81 +1,145 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" width="1200" height="350">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="960" height="300" role="img" aria-label="DiskSweep — Industrial Precision Rust Developer Disk Cleaner">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#07080B" />
-      <stop offset="55%" stop-color="#110E0C" />
-      <stop offset="100%" stop-color="#180D0A" />
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0E14"/>
+      <stop offset="60%" stop-color="#0F141D"/>
+      <stop offset="100%" stop-color="#0B0E14"/>
     </linearGradient>
-    <radialGradient id="rustGlow" cx="80%" cy="50%" r="42%">
-      <stop offset="0%" stop-color="#F97316" stop-opacity="0.28" />
-      <stop offset="65%" stop-color="#EF4444" stop-opacity="0.08" />
-      <stop offset="100%" stop-color="#07080B" stop-opacity="0" />
-    </radialGradient>
-    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="52%" stop-color="#FB923C" />
-      <stop offset="100%" stop-color="#EF4444" />
+    <linearGradient id="sweepBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="78%" stop-color="#38BDF8" stop-opacity="0.16"/>
+      <stop offset="98%" stop-color="#38BDF8" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#E0F2FE" stop-opacity="0"/>
     </linearGradient>
-    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
-      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#221E1D" stroke-width="0.9" />
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1E293B" stroke-width="0.75" opacity="0.55"/>
     </pattern>
+    <clipPath id="frameClip">
+      <rect x="8" y="8" width="944" height="284" rx="10"/>
+    </clipPath>
     <style>
-      .ssd-bar { animation: reclaim 5s ease-in-out infinite; }
-      .pulse { animation: blink 1.5s ease-in-out infinite; }
-      @keyframes reclaim {
-        0%, 20% { width: 318px; fill: #EF4444; }
-        55%, 85% { width: 132px; fill: #10B981; }
-        100% { width: 318px; fill: #EF4444; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+      .sweep {
+        animation: scanSweep 4.2s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
       }
-      @keyframes blink {
+      .pulseDot {
+        animation: pulseGlow 2.2s ease-in-out infinite;
+      }
+      .barAnim1 { animation: barBreath1 3.6s ease-in-out infinite; }
+      .barAnim2 { animation: barBreath2 3.6s ease-in-out infinite; }
+      .barAnim3 { animation: barBreath3 3.6s ease-in-out infinite; }
+      @keyframes scanSweep {
+        0% { transform: translateX(-220px); }
+        100% { transform: translateX(1020px); }
+      }
+      @keyframes pulseGlow {
         0%, 100% { opacity: 1; }
         50% { opacity: 0.35; }
+      }
+      @keyframes barBreath1 {
+        0%, 100% { width: 148px; }
+        50% { width: 168px; }
+      }
+      @keyframes barBreath2 {
+        0%, 100% { width: 112px; }
+        50% { width: 132px; }
+      }
+      @keyframes barBreath3 {
+        0%, 100% { width: 84px; }
+        50% { width: 98px; }
       }
     </style>
   </defs>
 
-  <rect width="1200" height="350" rx="20" fill="url(#bg)" />
-  <rect width="1200" height="350" rx="20" fill="url(#grid)" />
-  <rect width="1200" height="350" rx="20" fill="url(#rustGlow)" />
-  <rect x="1" y="1" width="1198" height="348" rx="19" fill="none" stroke="#2A2422" stroke-width="2" />
+  <!-- Outer Frame -->
+  <rect x="8" y="8" width="944" height="284" rx="10" fill="url(#bgGrad)" stroke="#2A3444" stroke-width="1.5"/>
 
-  
-  <g transform="translate(60, 44)">
-    <rect width="332" height="32" rx="16" fill="#141110" stroke="#F97316" stroke-opacity="0.5" />
-    <circle class="pulse" cx="18" cy="16" r="5" fill="#F97316" />
-    <text x="34" y="21" fill="#FED7AA" font-family="Consolas, monospace" font-size="13" font-weight="700">RUST NATIVE // DAY 14 FINALE</text>
-  </g>
+  <g clip-path="url(#frameClip)">
+    <!-- Subtle Engineering Grid -->
+    <rect x="8" y="8" width="944" height="284" fill="url(#grid)"/>
 
-  
-  <text x="60" y="152" fill="url(#titleGrad)" font-family="&#39;Segoe UI&#39;, sans-serif" font-size="74" font-weight="900" letter-spacing="-2">DISKSWEEP</text>
-  <text x="62" y="194" fill="#A1A1AA" font-family="&#39;Segoe UI&#39;, sans-serif" font-size="21" font-weight="500">Reclaim 50GB+ of zombie node_modules, target &amp; .venv in 0.4 seconds.</text>
-  <text x="62" y="224" fill="#71717A" font-family="Consolas, monospace" font-size="14">Rayon Multi-Threaded Rust  •  Ratatui TUI  •  Zombie Age Guard  •  ~3MB Binary</text>
+    <!-- Top Accent Hairline -->
+    <rect x="8" y="8" width="944" height="2.5" fill="url(#accentLine)"/>
 
-  
-  <g transform="translate(60, 262)" font-family="Consolas, monospace" font-size="13" font-weight="700">
-    <rect x="0" y="0" width="126" height="34" rx="8" fill="#141110" stroke="#2E2826" />
-    <text x="18" y="22" fill="#FB923C">Rust 2021</text>
-    <rect x="138" y="0" width="144" height="34" rx="8" fill="#141110" stroke="#2E2826" />
-    <text x="154" y="22" fill="#34D399">Rayon Parallel</text>
-    <rect x="294" y="0" width="142" height="34" rx="8" fill="#141110" stroke="#2E2826" />
-    <text x="310" y="22" fill="#FBBF24">Ratatui TUI</text>
-    <rect x="448" y="0" width="178" height="34" rx="8" fill="#141110" stroke="#2E2826" />
-    <text x="464" y="22" fill="#38BDF8">Win / Linux / Mac</text>
-  </g>
+    <!-- Animated 60fps Scanner Beam -->
+    <rect class="sweep" x="0" y="10" width="190" height="282" fill="url(#sweepBeam)"/>
 
-  
-  <g transform="translate(748, 72)">
-    <rect width="400" height="206" rx="16" fill="#0D0F14" stroke="#2E2826" stroke-width="2" />
-    <text x="24" y="36" fill="#FB923C" font-family="Consolas, monospace" font-size="13" font-weight="700">⚡ LIVE SSD RECLAMATION</text>
-    <text x="24" y="68" fill="#E4E4E7" font-family="Consolas, monospace" font-size="12">C:\Projects (37 Dev Artifacts Found)</text>
+    <!-- Top Status Telemetry Bar -->
+    <rect x="32" y="28" width="144" height="24" rx="4" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+    <circle class="pulseDot" cx="46" cy="40" r="4" fill="#10B981"/>
+    <text x="58" y="44" class="mono" font-size="11" font-weight="700" fill="#E2E8F0">RUST EDITION 2021</text>
 
-    
-    <rect x="24" y="84" width="352" height="22" rx="6" fill="#1C1917" stroke="#2E2826" />
-    <rect class="ssd-bar" x="24" y="84" width="318" height="22" rx="6" fill="#EF4444" />
+    <rect x="188" y="28" width="166" height="24" rx="4" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+    <text x="200" y="44" class="mono" font-size="11" fill="#38BDF8">WIN · LINUX · MACOS</text>
 
-    <g font-family="Consolas, monospace" font-size="12">
-      <text x="24" y="136" fill="#FBBF24">● node_modules   24.6 GB  [ZOMBIE]</text>
-      <text x="24" y="158" fill="#FB923C">● rust/target    18.2 GB  [ZOMBIE]</text>
-      <text x="24" y="180" fill="#38BDF8">● .venv / .next   9.4 GB  [ZOMBIE]</text>
+    <rect x="366" y="28" width="128" height="24" rx="4" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+    <text x="378" y="44" class="mono" font-size="11" fill="#10B981">~3 MB BINARY</text>
+
+    <!-- Primary Wordmark -->
+    <text x="32" y="122" class="sans" font-size="56" font-weight="800" letter-spacing="-1.5" fill="#F8FAFC">
+      DISK<tspan fill="#38BDF8">SWEEP</tspan>
+    </text>
+    <text x="35" y="152" class="sans" font-size="16" font-weight="500" fill="#94A3B8">
+      Blazing-fast parallel developer disk cleaner &amp; interactive Ratatui TUI.
+    </text>
+    <text x="35" y="175" class="mono" font-size="12.5" fill="#64748B">
+      Zero false positives · Non-descending Rayon walker · One-key Zombie Sweep (&gt;30d)
+    </text>
+
+    <!-- Ecosystem Pills -->
+    <g transform="translate(32, 204)">
+      <rect x="0" y="0" width="66" height="26" rx="4" fill="#F59E0B"/>
+      <text x="33" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">NODE</text>
+
+      <rect x="76" y="0" width="66" height="26" rx="4" fill="#F97316"/>
+      <text x="109" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">RUST</text>
+
+      <rect x="152" y="0" width="80" height="26" rx="4" fill="#22D3EE"/>
+      <text x="192" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">PYTHON</text>
+
+      <rect x="242" y="0" width="80" height="26" rx="4" fill="#3B82F6"/>
+      <text x="282" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#FFFFFF">DOTNET</text>
+
+      <rect x="332" y="0" width="66" height="26" rx="4" fill="#F8FAFC"/>
+      <text x="365" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">NEXT</text>
+
+      <rect x="408" y="0" width="76" height="26" rx="4" fill="#10B981"/>
+      <text x="446" y="17" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">BUILD</text>
     </g>
+
+    <!-- Right-side Telemetry Card -->
+    <g transform="translate(650, 44)">
+      <rect x="0" y="0" width="276" height="214" rx="8" fill="#11161F" stroke="#2A3444" stroke-width="1.2"/>
+      <text x="16" y="26" class="mono" font-size="11" font-weight="700" fill="#38BDF8">PARALLEL SCAN ENGINE</text>
+      <line x1="16" y1="36" x2="260" y2="36" stroke="#1E293B" stroke-width="1"/>
+
+      <text x="16" y="60" class="mono" font-size="11" fill="#94A3B8">node_modules</text>
+      <text x="260" y="60" text-anchor="end" class="mono" font-size="11" font-weight="700" fill="#F59E0B">21.4 GB</text>
+      <rect x="16" y="68" width="244" height="8" rx="2" fill="#1E293B"/>
+      <rect class="barAnim1" x="16" y="68" width="160" height="8" rx="2" fill="#F59E0B"/>
+
+      <text x="16" y="102" class="mono" font-size="11" fill="#94A3B8">target (Cargo.toml)</text>
+      <text x="260" y="102" text-anchor="end" class="mono" font-size="11" font-weight="700" fill="#F97316">14.2 GB</text>
+      <rect x="16" y="110" width="244" height="8" rx="2" fill="#1E293B"/>
+      <rect class="barAnim2" x="16" y="110" width="120" height="8" rx="2" fill="#F97316"/>
+
+      <text x="16" y="144" class="mono" font-size="11" fill="#94A3B8">.venv / .next / obj</text>
+      <text x="260" y="144" text-anchor="end" class="mono" font-size="11" font-weight="700" fill="#22D3EE">7.2 GB</text>
+      <rect x="16" y="152" width="244" height="8" rx="2" fill="#1E293B"/>
+      <rect class="barAnim3" x="16" y="152" width="88" height="8" rx="2" fill="#22D3EE"/>
+
+      <line x1="16" y1="176" x2="260" y2="176" stroke="#1E293B" stroke-width="1"/>
+      <text x="16" y="198" class="mono" font-size="11" fill="#64748B">RECLAIMABLE</text>
+      <text x="260" y="198" text-anchor="end" class="mono" font-size="13" font-weight="800" fill="#10B981">42.8 GB</text>
+    </g>
+
+    <!-- Bottom CLI Command Hint -->
+    <text x="32" y="268" class="mono" font-size="12" fill="#64748B">$ <tspan fill="#E2E8F0">disksweep</tspan> ~/projects  <tspan fill="#38BDF8">│</tspan>  $ <tspan fill="#E2E8F0">disksweep clean</tspan> --older-than 30 --dry-run</text>
   </g>
 </svg>

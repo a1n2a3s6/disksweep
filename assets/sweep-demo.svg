@@ -1,69 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="960" height="440" role="img" aria-label="DiskSweep Interactive TUI &amp; SSD Reclamation Preview">
   <defs>
+    <linearGradient id="ssdGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </linearGradient>
     <style>
-      .cursor-row { animation: rowMove 6s ease-in-out infinite; }
-      @keyframes rowMove {
-        0%, 28% { transform: translateY(0px); }
-        38%, 64% { transform: translateY(34px); }
-        74%, 92% { transform: translateY(68px); }
-        100% { transform: translateY(0px); }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .rowHighlight {
+        animation: moveCursor 5.4s steps(1, end) infinite;
+      }
+      .reclaimFill {
+        animation: growReclaim 5.4s ease-in-out infinite;
+      }
+      .cursorBlink {
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes moveCursor {
+        0%, 24% { transform: translateY(0px); }
+        25%, 49% { transform: translateY(34px); }
+        50%, 74% { transform: translateY(68px); }
+        75%, 100% { transform: translateY(102px); }
+      }
+      @keyframes growReclaim {
+        0%, 15% { width: 120px; }
+        50%, 85% { width: 470px; }
+        100% { width: 120px; }
+      }
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
       }
     </style>
   </defs>
 
-  <rect width="1200" height="340" rx="16" fill="#0B0E14" stroke="#2A313C" stroke-width="2" />
+  <!-- Terminal Window Frame -->
+  <rect x="8" y="8" width="944" height="424" rx="10" fill="#0B0E14" stroke="#2A3444" stroke-width="1.5"/>
 
-  
-  <rect x="2" y="2" width="1196" height="38" rx="14" fill="#141820" />
-  <rect x="16" y="9" width="144" height="24" rx="4" fill="#F97316" />
-  <text x="88" y="25" text-anchor="middle" fill="#0B0E14" font-family="Consolas, monospace" font-size="12" font-weight="800">DISKSWEEP v1.0</text>
-  <text x="178" y="25" fill="#94A3B8" font-family="Consolas, monospace" font-size="12">PATH: ~/Projects  │  FOUND: 52.2 GB (37 dirs)  │  SELECTED: </text>
-  <text x="642" y="25" fill="#EF4444" font-family="Consolas, monospace" font-size="12" font-weight="700">46.8 GB (ZOMBIES)</text>
-  <text x="990" y="25" fill="#10B981" font-family="Consolas, monospace" font-size="12" font-weight="700">SCAN: 0.38s ⚡</text>
+  <!-- Window Chrome -->
+  <rect x="9" y="9" width="942" height="32" rx="9" fill="#11161F"/>
+  <line x1="9" y1="41" x2="951" y2="41" stroke="#2A3444" stroke-width="1"/>
+  <circle cx="28" cy="25" r="5" fill="#F43F5E"/>
+  <circle cx="46" cy="25" r="5" fill="#F59E0B"/>
+  <circle cx="64" cy="25" r="5" fill="#10B981"/>
+  <text x="480" y="29" text-anchor="middle" class="mono" font-size="11.5" fill="#78889E">disksweep ~/workspace — 120×34</text>
 
-  
-  <text x="28" y="68" fill="#64748B" font-family="Consolas, monospace" font-size="12" font-weight="700">SEL   SIZE         USAGE BAR            ECOSYSTEM    AGE          PROJECT PATH</text>
-  <line x1="20" y1="80" x2="1180" y2="80" stroke="#1E293B" />
+  <!-- TUI Top Header Bar -->
+  <rect x="22" y="54" width="916" height="34" rx="3" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+  <rect x="29" y="61" width="122" height="20" rx="2" fill="#38BDF8"/>
+  <text x="90" y="75" text-anchor="middle" class="mono" font-size="11.5" font-weight="800" fill="#0B0E14">DISKSWEEP v1.0</text>
+  <text x="164" y="75" class="mono" font-size="11.5" fill="#78889E">│ PATH <tspan fill="#E2E8F0">~/workspace</tspan> │ FOUND <tspan fill="#F59E0B" font-weight="700">42.8 GB (37 dirs)</tspan> │ SELECTED <tspan fill="#F43F5E" font-weight="700">18.4 GB</tspan> │ RECLAIMED <tspan fill="#10B981" font-weight="700">12.6 GB</tspan></text>
 
-  
-  <rect class="cursor-row" x="18" y="88" width="1164" height="30" rx="6" fill="#1E293B" fill-opacity="0.7" stroke="#F97316" stroke-opacity="0.6" />
+  <!-- Main Table Container -->
+  <rect x="22" y="98" width="916" height="238" rx="3" fill="#0B0E14" stroke="#2A3444" stroke-width="1"/>
+  <rect x="34" y="90" width="218" height="16" fill="#0B0E14"/>
+  <text x="40" y="102" class="mono" font-size="11" font-weight="700" fill="#38BDF8">ARTIFACTS (37 shown) │ SORT: SIZE ↓</text>
 
-  
-  <g font-family="Consolas, monospace" font-size="13">
-    <text x="28" y="108" fill="#10B981" font-weight="700">[✓]   11.4 GB</text>
-    <text x="166" y="108" fill="#FB923C">██████████████░░</text>
-    <text x="330" y="108" fill="#FB923C" font-weight="700">RUST</text>
-    <text x="424" y="108" fill="#EF4444">148d 🔴</text>
-    <text x="518" y="108" fill="#E2E8F0">old-game-engine/target</text>
+  <!-- Table Header Row -->
+  <rect x="23" y="108" width="914" height="24" fill="#11161F"/>
+  <text x="38" y="124" class="mono" font-size="11" font-weight="700" fill="#78889E">SEL</text>
+  <text x="92" y="124" class="mono" font-size="11" font-weight="700" fill="#78889E">SIZE &amp; IMPACT</text>
+  <text x="290" y="124" class="mono" font-size="11" font-weight="700" fill="#78889E">ECOSYSTEM</text>
+  <text x="396" y="124" class="mono" font-size="11" font-weight="700" fill="#78889E">AGE</text>
+  <text x="492" y="124" class="mono" font-size="11" font-weight="700" fill="#78889E">PROJECT / PATH</text>
 
-    <text x="28" y="142" fill="#10B981" font-weight="700">[✓]    6.8 GB</text>
-    <text x="166" y="142" fill="#FBBF24">██████████░░░░░░</text>
-    <text x="330" y="142" fill="#FBBF24" font-weight="700">NODE</text>
-    <text x="424" y="142" fill="#EF4444">94d  🔴</text>
-    <text x="518" y="142" fill="#E2E8F0">saas-mvp-2025/node_modules</text>
+  <!-- Animated Row Cursor Highlight -->
+  <rect class="rowHighlight" x="24" y="138" width="912" height="30" fill="#1C2534"/>
 
-    <text x="28" y="176" fill="#10B981" font-weight="700">[✓]    4.2 GB</text>
-    <text x="166" y="176" fill="#38BDF8">██████░░░░░░░░░░</text>
-    <text x="330" y="176" fill="#38BDF8" font-weight="700">PYTHON</text>
-    <text x="424" y="176" fill="#EF4444">63d  🔴</text>
-    <text x="518" y="176" fill="#E2E8F0">ml-experiments/.venv</text>
+  <!-- Row 1 -->
+  <text x="36" y="158" class="mono" font-size="12" font-weight="700" fill="#10B981">[✓]</text>
+  <text x="92" y="158" class="mono" font-size="12" fill="#E2E8F0">8.42 GB  <tspan fill="#F43F5E">████████</tspan></text>
+  <rect x="290" y="144" width="66" height="19" rx="2" fill="#F97316"/>
+  <text x="323" y="158" text-anchor="middle" class="mono" font-size="11" font-weight="800" fill="#0B0E14">RUST</text>
+  <text x="396" y="158" class="mono" font-size="12" fill="#F43F5E">142d ●</text>
+  <text x="492" y="158" class="mono" font-size="12" font-weight="700" fill="#E2E8F0">hyperion-engine  <tspan font-weight="400" fill="#78889E">hyperion-engine/target</tspan></text>
 
-    <text x="28" y="210" fill="#10B981" font-weight="700">[✓]    2.9 GB</text>
-    <text x="166" y="210" fill="#F8FAFC">████░░░░░░░░░░░░</text>
-    <text x="330" y="210" fill="#F8FAFC" font-weight="700">NEXT.JS</text>
-    <text x="424" y="210" fill="#EF4444">41d  🔴</text>
-    <text x="518" y="210" fill="#E2E8F0">portfolio-v1/.next</text>
+  <!-- Row 2 -->
+  <text x="36" y="192" class="mono" font-size="12" font-weight="700" fill="#10B981">[✓]</text>
+  <text x="92" y="192" class="mono" font-size="12" fill="#E2E8F0">5.91 GB  <tspan fill="#F43F5E">██████░░</tspan></text>
+  <rect x="290" y="178" width="66" height="19" rx="2" fill="#F59E0B"/>
+  <text x="323" y="192" text-anchor="middle" class="mono" font-size="11" font-weight="800" fill="#0B0E14">NODE</text>
+  <text x="396" y="192" class="mono" font-size="12" fill="#F43F5E"> 96d ●</text>
+  <text x="492" y="192" class="mono" font-size="12" font-weight="700" fill="#E2E8F0">saas-dashboard  <tspan font-weight="400" fill="#78889E">saas-dashboard/node_modules</tspan></text>
 
-    <text x="28" y="244" fill="#64748B">[ ]    1.8 GB</text>
-    <text x="166" y="244" fill="#10B981">███░░░░░░░░░░░░░</text>
-    <text x="330" y="244" fill="#60A5FA" font-weight="700">.NET</text>
-    <text x="424" y="244" fill="#10B981">1d   🟢</text>
-    <text x="518" y="244" fill="#94A3B8">minime-pet/src/MiniMe/bin  (ACTIVE — SKIPPED)</text>
-  </g>
+  <!-- Row 3 -->
+  <text x="36" y="226" class="mono" font-size="12" font-weight="700" fill="#10B981">[✓]</text>
+  <text x="92" y="226" class="mono" font-size="12" fill="#E2E8F0">4.07 GB  <tspan fill="#F59E0B">████░░░░</tspan></text>
+  <rect x="290" y="212" width="66" height="19" rx="2" fill="#22D3EE"/>
+  <text x="323" y="226" text-anchor="middle" class="mono" font-size="11" font-weight="800" fill="#0B0E14">PYTHON</text>
+  <text x="396" y="226" class="mono" font-size="12" fill="#F43F5E"> 61d ●</text>
+  <text x="492" y="226" class="mono" font-size="12" font-weight="700" fill="#E2E8F0">ml-vision-lab  <tspan font-weight="400" fill="#78889E">ml-vision-lab/.venv</tspan></text>
 
-  
-  <line x1="20" y1="292" x2="1180" y2="292" stroke="#1E293B" />
-  <text x="28" y="318" fill="#94A3B8" font-family="Consolas, monospace" font-size="12">
-    <tspan fill="#E2E8F0" font-weight="700">[j/k]</tspan> Move   <tspan fill="#E2E8F0" font-weight="700">[Space]</tspan> Select   <tspan fill="#FBBF24" font-weight="700">[z]</tspan> Select Zombies (&gt;30d)   <tspan fill="#EF4444" font-weight="700">[d]</tspan> Sweep Selected   <tspan fill="#E2E8F0" font-weight="700">[/]</tspan> Filter   <tspan fill="#E2E8F0" font-weight="700">[q]</tspan> Quit
+  <!-- Row 4 -->
+  <text x="36" y="260" class="mono" font-size="12" fill="#78889E">[ ]</text>
+  <text x="92" y="260" class="mono" font-size="12" fill="#E2E8F0">2.34 GB  <tspan fill="#38BDF8">██░░░░░░</tspan></text>
+  <rect x="290" y="246" width="66" height="19" rx="2" fill="#F8FAFC"/>
+  <text x="323" y="260" text-anchor="middle" class="mono" font-size="11" font-weight="800" fill="#0B0E14">NEXT</text>
+  <text x="396" y="260" class="mono" font-size="12" fill="#10B981">  4d ●</text>
+  <text x="492" y="260" class="mono" font-size="12" font-weight="700" fill="#E2E8F0">portfolio-v4  <tspan font-weight="400" fill="#78889E">portfolio-v4/.next</tspan></text>
+
+  <!-- Row 5 -->
+  <text x="36" y="294" class="mono" font-size="12" fill="#78889E">[ ]</text>
+  <text x="92" y="294" class="mono" font-size="12" fill="#E2E8F0">1.68 GB  <tspan fill="#38BDF8">██░░░░░░</tspan></text>
+  <rect x="290" y="280" width="66" height="19" rx="2" fill="#3B82F6"/>
+  <text x="323" y="294" text-anchor="middle" class="mono" font-size="11" font-weight="800" fill="#FFFFFF">DOTNET</text>
+  <text x="396" y="294" class="mono" font-size="12" fill="#10B981">  2d ●</text>
+  <text x="492" y="294" class="mono" font-size="12" font-weight="700" fill="#E2E8F0">ledger-api  <tspan font-weight="400" fill="#78889E">ledger-api/obj</tspan></text>
+
+  <!-- Live SSD Reclamation Gauge -->
+  <rect x="22" y="344" width="916" height="36" rx="3" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+  <text x="36" y="366" class="mono" font-size="11.5" font-weight="700" fill="#10B981">SSD RECLAMATION</text>
+  <rect x="172" y="356" width="540" height="12" rx="3" fill="#1E293B"/>
+  <rect class="reclaimFill" x="172" y="356" width="380" height="12" rx="3" fill="url(#ssdGrad)"/>
+  <text x="728" y="366" class="mono" font-size="11.5" fill="#E2E8F0">PARALLEL RAYON WIPE <tspan fill="#10B981" font-weight="700">142 ms</tspan></text>
+
+  <!-- Footer Keybinding Bar -->
+  <rect x="22" y="388" width="916" height="30" rx="3" fill="#11161F" stroke="#2A3444" stroke-width="1"/>
+  <text x="34" y="407" class="mono" font-size="11" fill="#78889E">
+    <tspan fill="#38BDF8" font-weight="700">j/k</tspan> Nav  <tspan fill="#38BDF8" font-weight="700">Space</tspan> Toggle  <tspan fill="#38BDF8" font-weight="700">z</tspan> Zombies (&gt;30d)  <tspan fill="#38BDF8" font-weight="700">a</tspan> All  <tspan fill="#38BDF8" font-weight="700">s</tspan> Sort  <tspan fill="#38BDF8" font-weight="700">/</tspan> Filter  <tspan fill="#F43F5E" font-weight="700">d</tspan> Delete  <tspan fill="#38BDF8" font-weight="700">r</tspan> Rescan  <tspan fill="#38BDF8" font-weight="700">q</tspan> Quit  <tspan class="cursorBlink" fill="#38BDF8">█</tspan>
   </text>
 </svg>
