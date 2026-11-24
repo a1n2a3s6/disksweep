@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" width="1200" height="350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07080B" />
+      <stop offset="55%" stop-color="#110E0C" />
+      <stop offset="100%" stop-color="#180D0A" />
+    </linearGradient>
+    <radialGradient id="rustGlow" cx="80%" cy="50%" r="42%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.28" />
+      <stop offset="65%" stop-color="#EF4444" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#07080B" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="52%" stop-color="#FB923C" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="#221E1D" stroke-width="0.9" />
+    </pattern>
+    <style>
+      .ssd-bar { animation: reclaim 5s ease-in-out infinite; }
+      .pulse { animation: blink 1.5s ease-in-out infinite; }
+      @keyframes reclaim {
+        0%, 20% { width: 318px; fill: #EF4444; }
+        55%, 85% { width: 132px; fill: #10B981; }
+        100% { width: 318px; fill: #EF4444; }
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="350" rx="20" fill="url(#bg)" />
+  <rect width="1200" height="350" rx="20" fill="url(#grid)" />
+  <rect width="1200" height="350" rx="20" fill="url(#rustGlow)" />
+  <rect x="1" y="1" width="1198" height="348" rx="19" fill="none" stroke="#2A2422" stroke-width="2" />
+
+  
+  <g transform="translate(60, 44)">
+    <rect width="332" height="32" rx="16" fill="#141110" stroke="#F97316" stroke-opacity="0.5" />
+    <circle class="pulse" cx="18" cy="16" r="5" fill="#F97316" />
+    <text x="34" y="21" fill="#FED7AA" font-family="Consolas, monospace" font-size="13" font-weight="700">RUST NATIVE // DAY 14 FINALE</text>
+  </g>
+
+  
+  <text x="60" y="152" fill="url(#titleGrad)" font-family="&#39;Segoe UI&#39;, sans-serif" font-size="74" font-weight="900" letter-spacing="-2">DISKSWEEP</text>
+  <text x="62" y="194" fill="#A1A1AA" font-family="&#39;Segoe UI&#39;, sans-serif" font-size="21" font-weight="500">Reclaim 50GB+ of zombie node_modules, target &amp; .venv in 0.4 seconds.</text>
+  <text x="62" y="224" fill="#71717A" font-family="Consolas, monospace" font-size="14">Rayon Multi-Threaded Rust  •  Ratatui TUI  •  Zombie Age Guard  •  ~3MB Binary</text>
+
+  
+  <g transform="translate(60, 262)" font-family="Consolas, monospace" font-size="13" font-weight="700">
+    <rect x="0" y="0" width="126" height="34" rx="8" fill="#141110" stroke="#2E2826" />
+    <text x="18" y="22" fill="#FB923C">Rust 2021</text>
+    <rect x="138" y="0" width="144" height="34" rx="8" fill="#141110" stroke="#2E2826" />
+    <text x="154" y="22" fill="#34D399">Rayon Parallel</text>
+    <rect x="294" y="0" width="142" height="34" rx="8" fill="#141110" stroke="#2E2826" />
+    <text x="310" y="22" fill="#FBBF24">Ratatui TUI</text>
+    <rect x="448" y="0" width="178" height="34" rx="8" fill="#141110" stroke="#2E2826" />
+    <text x="464" y="22" fill="#38BDF8">Win / Linux / Mac</text>
+  </g>
+
+  
+  <g transform="translate(748, 72)">
+    <rect width="400" height="206" rx="16" fill="#0D0F14" stroke="#2E2826" stroke-width="2" />
+    <text x="24" y="36" fill="#FB923C" font-family="Consolas, monospace" font-size="13" font-weight="700">⚡ LIVE SSD RECLAMATION</text>
+    <text x="24" y="68" fill="#E4E4E7" font-family="Consolas, monospace" font-size="12">C:\Projects (37 Dev Artifacts Found)</text>
+
+    
+    <rect x="24" y="84" width="352" height="22" rx="6" fill="#1C1917" stroke="#2E2826" />
+    <rect class="ssd-bar" x="24" y="84" width="318" height="22" rx="6" fill="#EF4444" />
+
+    <g font-family="Consolas, monospace" font-size="12">
+      <text x="24" y="136" fill="#FBBF24">● node_modules   24.6 GB  [ZOMBIE]</text>
+      <text x="24" y="158" fill="#FB923C">● rust/target    18.2 GB  [ZOMBIE]</text>
+      <text x="24" y="180" fill="#38BDF8">● .venv / .next   9.4 GB  [ZOMBIE]</text>
+    </g>
+  </g>
+</svg>

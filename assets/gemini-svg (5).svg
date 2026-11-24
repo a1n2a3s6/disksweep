@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="1200" height="340">
+  <defs>
+    <style>
+      .cursor-row { animation: rowMove 6s ease-in-out infinite; }
+      @keyframes rowMove {
+        0%, 28% { transform: translateY(0px); }
+        38%, 64% { transform: translateY(34px); }
+        74%, 92% { transform: translateY(68px); }
+        100% { transform: translateY(0px); }
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="340" rx="16" fill="#0B0E14" stroke="#2A313C" stroke-width="2" />
+
+  
+  <rect x="2" y="2" width="1196" height="38" rx="14" fill="#141820" />
+  <rect x="16" y="9" width="144" height="24" rx="4" fill="#F97316" />
+  <text x="88" y="25" text-anchor="middle" fill="#0B0E14" font-family="Consolas, monospace" font-size="12" font-weight="800">DISKSWEEP v1.0</text>
+  <text x="178" y="25" fill="#94A3B8" font-family="Consolas, monospace" font-size="12">PATH: ~/Projects  │  FOUND: 52.2 GB (37 dirs)  │  SELECTED: </text>
+  <text x="642" y="25" fill="#EF4444" font-family="Consolas, monospace" font-size="12" font-weight="700">46.8 GB (ZOMBIES)</text>
+  <text x="990" y="25" fill="#10B981" font-family="Consolas, monospace" font-size="12" font-weight="700">SCAN: 0.38s ⚡</text>
+
+  
+  <text x="28" y="68" fill="#64748B" font-family="Consolas, monospace" font-size="12" font-weight="700">SEL   SIZE         USAGE BAR            ECOSYSTEM    AGE          PROJECT PATH</text>
+  <line x1="20" y1="80" x2="1180" y2="80" stroke="#1E293B" />
+
+  
+  <rect class="cursor-row" x="18" y="88" width="1164" height="30" rx="6" fill="#1E293B" fill-opacity="0.7" stroke="#F97316" stroke-opacity="0.6" />
+
+  
+  <g font-family="Consolas, monospace" font-size="13">
+    <text x="28" y="108" fill="#10B981" font-weight="700">[✓]   11.4 GB</text>
+    <text x="166" y="108" fill="#FB923C">██████████████░░</text>
+    <text x="330" y="108" fill="#FB923C" font-weight="700">RUST</text>
+    <text x="424" y="108" fill="#EF4444">148d 🔴</text>
+    <text x="518" y="108" fill="#E2E8F0">old-game-engine/target</text>
+
+    <text x="28" y="142" fill="#10B981" font-weight="700">[✓]    6.8 GB</text>
+    <text x="166" y="142" fill="#FBBF24">██████████░░░░░░</text>
+    <text x="330" y="142" fill="#FBBF24" font-weight="700">NODE</text>
+    <text x="424" y="142" fill="#EF4444">94d  🔴</text>
+    <text x="518" y="142" fill="#E2E8F0">saas-mvp-2025/node_modules</text>
+
+    <text x="28" y="176" fill="#10B981" font-weight="700">[✓]    4.2 GB</text>
+    <text x="166" y="176" fill="#38BDF8">██████░░░░░░░░░░</text>
+    <text x="330" y="176" fill="#38BDF8" font-weight="700">PYTHON</text>
+    <text x="424" y="176" fill="#EF4444">63d  🔴</text>
+    <text x="518" y="176" fill="#E2E8F0">ml-experiments/.venv</text>
+
+    <text x="28" y="210" fill="#10B981" font-weight="700">[✓]    2.9 GB</text>
+    <text x="166" y="210" fill="#F8FAFC">████░░░░░░░░░░░░</text>
+    <text x="330" y="210" fill="#F8FAFC" font-weight="700">NEXT.JS</text>
+    <text x="424" y="210" fill="#EF4444">41d  🔴</text>
+    <text x="518" y="210" fill="#E2E8F0">portfolio-v1/.next</text>
+
+    <text x="28" y="244" fill="#64748B">[ ]    1.8 GB</text>
+    <text x="166" y="244" fill="#10B981">███░░░░░░░░░░░░░</text>
+    <text x="330" y="244" fill="#60A5FA" font-weight="700">.NET</text>
+    <text x="424" y="244" fill="#10B981">1d   🟢</text>
+    <text x="518" y="244" fill="#94A3B8">minime-pet/src/MiniMe/bin  (ACTIVE — SKIPPED)</text>
+  </g>
+
+  
+  <line x1="20" y1="292" x2="1180" y2="292" stroke="#1E293B" />
+  <text x="28" y="318" fill="#94A3B8" font-family="Consolas, monospace" font-size="12">
+    <tspan fill="#E2E8F0" font-weight="700">[j/k]</tspan> Move   <tspan fill="#E2E8F0" font-weight="700">[Space]</tspan> Select   <tspan fill="#FBBF24" font-weight="700">[z]</tspan> Select Zombies (&gt;30d)   <tspan fill="#EF4444" font-weight="700">[d]</tspan> Sweep Selected   <tspan fill="#E2E8F0" font-weight="700">[/]</tspan> Filter   <tspan fill="#E2E8F0" font-weight="700">[q]</tspan> Quit
+  </text>
+</svg>
